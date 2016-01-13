@@ -29,17 +29,18 @@ var stringifyJSON = function(obj) {
   	//add a set of quotations around the obj
   	return '"' + obj + '"';
   
-  } if (typeof === null); {
+  } if (obj === null); {
+  	
   	return "null";
 
   	//if it's an array
   	//if array.isarray of object
-  }	if (Array.isArray(obj)); {
+  }	if (Array.isArray(obj)) {
 
   	//overwrite the value of storage
   	storage = "["
   	//loop through the object
-  	for (var i = 0; obj.length; i ++) {
+  	for (var i = 0; i < obj.length; i ++) {
   		//now overwrite the value of storage again
   		//call it recursively 
   		storage += stringifyJSON(obj[i]);
@@ -58,7 +59,7 @@ var stringifyJSON = function(obj) {
   	} else {
 
   		//make a new array and put the object into the array
-  		var objectCommaArray = [];
+  		var commaArray = [];
 
   		storage = "{";
 
@@ -67,15 +68,15 @@ var stringifyJSON = function(obj) {
 
   			if (obj[key] !== undefined && typeof obj[key] !== "function") {
   				//push recursive function
-  				objectCommaArray.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
+  				commaArray.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
   			}
   		}
 
-  		for (var i = 0; i < objectCommaArray.length; i ++) {
+  		for (var i = 0; i < commaArray.length; i ++) {
 
-  			storage += objectCommaArray[i];
+  			storage +=  commaArray[i];
   			//if you're not at the last value don't add a comma
-  			if(i < objectCommaArray.length - 1) {
+  			if(i < commaArray.length - 1) {
   				storage += ","
   			}
   		}
