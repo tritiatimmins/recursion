@@ -10,15 +10,19 @@ var stringifyJSON = function(obj) {
 
   var storage = [];
   // if object is a boolean
-  	if (typeof obj === "boolean") {
-  	//then return true or false
+  	if ( typeof obj === "boolean" ) {
+  	
+  	/* //then return true or false
   		if (obj === true) {
   			return "true";
   		} if (obj === false) {
   			return "false";
   		}
+*/
+	return obj ? "true" : "false";
 
   	//can also do return obj ? "true" : "false"
+  
   } if (typeof obj === "number") {
   		//toString() makes something a string
   	return obj.toString();
@@ -29,7 +33,7 @@ var stringifyJSON = function(obj) {
   	//add a set of quotations around the obj
   	return '"' + obj + '"';
   
-  } if (obj === null); {
+  } if (obj === null) {
   	
   	return "null";
 
